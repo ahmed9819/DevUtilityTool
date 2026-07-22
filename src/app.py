@@ -1,8 +1,9 @@
 import typer
-
+from src.commands.greet import hello
+from src.commands.init import init
 
 app = typer.Typer()
 
-@app.command()
-def hello(name: str, age: int):
-    typer.echo(f"Hello, {name}! You are {age} years old.")
+app.command()(hello)
+app.command()(init)
+

@@ -6,6 +6,8 @@ from src.services.project_creator import (
 )
 from src.services.git_service import GitNotInstalledError
 from src.services.venv_service import VirtualEnvironmentCreationError
+from src.services.template_service import TemplateNotFoundError
+
 
 def init(
     name: str = typer.Argument(
@@ -21,10 +23,16 @@ def init(
         False,
         "--venv",
         help="Create a Python virtual environment."
-    )    
+    ),
+    template: str = typer.Option(
+        "Default",
+        "--template",
+        help="project template to use."
+    )
+
 ):
     try:
-        project_path = initialize_project(name, initialize_git=git, initialize_venv=venv)
+        project_path = initialize_project(name, initialize_git=git, initialize_venv=venv, template_name=template)
 
         typer.echo(
             f"Project '{project_path}' created Successfully."
@@ -38,7 +46,7 @@ def init(
                 f"Python virtual environment created in '{project_path}'"
             )
 
-    except (InvalidProjectNameError, ProjectAlreadyExistsError, GitNotInstalledError, VirtualEnvironmentCreationError) as e:
+    except (InvalidProjectNameError, ProjectAlreadyExistsError, GitNotInstalledError, VirtualEnvironmentCreationError, TemplateNotFoundError) as e:
         typer.echo(f"{e}")
         raise typer.Exit()
     

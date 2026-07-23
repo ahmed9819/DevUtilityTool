@@ -135,10 +135,10 @@ This separation of concerns makes the project easier to maintain, test, and exte
 * [x] Git integration
 * [x] Project name validation
 * [x] Custom exception handling
+* [x] Virtual environment creation
 
 ### Planned
 
-* [ ] Virtual environment creation
 * [ ] Project templates
 * [ ] File organizer
 * [ ] Password generator

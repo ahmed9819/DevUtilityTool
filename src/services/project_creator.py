@@ -7,7 +7,13 @@ class InvalidProjectNameError(Exception):
 class ProjectAlreadyExistsError(Exception):
     pass
 
+
 def create_project(project_name: str):
+
+    """
+    Create the root project directory after validating the project name.
+    """
+
     
     if not re.match(r"^[a-zA-Z0-9_-]+$", project_name):
         raise InvalidProjectNameError(
@@ -21,29 +27,6 @@ def create_project(project_name: str):
             f"Project '{project_name}' already exists."
             )
     
-    project_path.mkdir()
-
-    folders = [
-        "src",
-        "tests",
-        "docs"
-    ]
-
-    for folder in folders:
-        folder_path = project_path / folder
-        folder_path.mkdir()
-
-    
-    files = [
-        "README.md",
-        ".gitignore",
-        "requirements.txt",
-        "main.py"
-    ]
-
-    for file in files:
-        file_path = project_path / file
-        file_path.touch()
-
+    project_path.mkdir(parents=True)
     return project_path
 

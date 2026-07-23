@@ -1,1 +1,191 @@
-# Developer Utility CLI 
+# DevUtilityTool
+
+A developer productivity CLI tool built with **Python** and **Typer** to automate common development tasks. The project is designed with a modular architecture and follows a professional Git/GitHub workflow using feature branches and pull requests.
+
+---
+
+## Features
+
+* Create a new project structure
+* Initialize a Git repository automatically
+* Validate project names
+* Custom exception handling
+* Modular and scalable architecture
+* Service-based project organization
+* Feature-based Git workflow
+
+---
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/<your-github-username>/DevUtilityTool.git
+```
+
+### 2. Navigate to the project
+
+```bash
+cd DevUtilityTool
+```
+
+### 3. Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+### 4. Activate the virtual environment
+
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux / macOS**
+
+```bash
+source venv/bin/activate
+```
+
+### 5. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Usage
+
+### Create a new project
+
+```bash
+python main.py init MyProject
+```
+
+### Create a new project with Git initialized
+
+```bash
+python main.py init MyProject --git
+```
+
+---
+
+## Project Structure
+
+```text
+DevUtilityTool/
+│
+├── src/
+│   ├── commands/
+│   │   ├── greet.py
+│   │   ├── init.py
+│   │   ├── hash.py
+│   │   ├── info.py
+│   │   ├── organize.py
+│   │   └── password.py
+│   │
+│   ├── services/
+│   │   ├── project_creator.py
+│   │   ├── project_initializer.py
+│   │   └── git_service.py
+│   │
+│   ├── app.py
+│   └── __init__.py
+│
+├── main.py
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
+
+---
+
+## Architecture
+
+The project follows a layered architecture.
+
+### Commands Layer
+
+Responsible for handling CLI commands and user input.
+
+### Services Layer
+
+Contains the business logic of the application.
+
+Current services include:
+
+* Project creation
+* Git repository initialization
+* Project orchestration
+
+This separation of concerns makes the project easier to maintain, test, and extend.
+
+---
+
+## Roadmap
+
+### Completed
+
+* [x] Greeting command
+* [x] Project initialization
+* [x] Git integration
+* [x] Project name validation
+* [x] Custom exception handling
+
+### Planned
+
+* [ ] Virtual environment creation
+* [ ] Project templates
+* [ ] File organizer
+* [ ] Password generator
+* [ ] Hash generator
+* [ ] Logging support
+* [ ] Unit tests
+* [ ] Configuration support
+
+---
+
+## Technologies Used
+
+* Python 3
+* Typer
+* Pathlib
+* Subprocess
+* Git
+* GitHub
+
+---
+
+## Learning Objectives
+
+This project is being developed to practice and demonstrate:
+
+* Python application architecture
+* CLI development with Typer
+* File and directory handling
+* Git automation
+* Exception handling
+* Modular software design
+* Professional Git and GitHub workflow
+
+---
+
+## Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push the branch.
+5. Open a Pull Request.
+
+---
+
+## License
+
+This project is licensed under the MIT License.

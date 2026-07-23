@@ -5,15 +5,40 @@ from src.services.project_creator import (
     ProjectAlreadyExistsError
 )
 from src.services.git_service import GitNotInstalledError
-def init(name: str, git: bool = False):
+from src.services.venv_service import VirtualEnvironmentCreationError
+
+def init(
+    name: str = typer.Argument(
+        ...,
+        help="Name of the project to create"
+    ),
+    git: bool = typer.Option(
+        False,
+        "--git",
+        help="Initialize a Git Repository."
+    ),
+    venv: bool =typer.Option(
+        False,
+        "--venv",
+        help="Create a Python virtual environment."
+    )    
+):
     try:
-        project_path = initialize_project(name, initialize_git=git)
+        project_path = initialize_project(name, initialize_git=git, initialize_venv=venv)
 
         typer.echo(
             f"Project '{project_path}' created Successfully."
         )
+        if git:
+            typer.echo(
+                f"git initialized in project '{project_path}'"
+            )
+        if venv:
+            typer.echo(
+                f"Python virtual environment created in '{project_path}'"
+            )
 
-    except (InvalidProjectNameError, ProjectAlreadyExistsError, GitNotInstalledError) as e:
+    except (InvalidProjectNameError, ProjectAlreadyExistsError, GitNotInstalledError, VirtualEnvironmentCreationError) as e:
         typer.echo(f"{e}")
         raise typer.Exit()
     

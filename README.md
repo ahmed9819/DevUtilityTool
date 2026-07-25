@@ -1,25 +1,40 @@
 # DevUtilityTool
 
-A developer productivity CLI tool built with **Python** and **Typer** to automate common development tasks. The project follows a modular, service-based architecture and a professional Git/GitHub workflow using feature branches and pull requests.
+A developer productivity CLI built with **Python** and **Typer** to automate common development tasks. The project follows a modular, service-based architecture and a professional Git/GitHub workflow using feature branches and pull requests.
+
+> **🚧 Project Status**
+>
+> This project is under active development and is being built as a learning-focused portfolio project to explore Python CLI development and software engineering best practices. Existing features are functional and follow clean architectural principles, while additional features and improvements are planned before the first stable release.
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-* Create new projects instantly
-* Initialize Git repositories
-* Create Python virtual environments
-* Generate projects from templates
-* Organize files by type
-* Generate cryptographically secure passwords
-* Generate text and file hashes
-* Validate project names
-* Custom exception handling
-* Modular and scalable architecture
+* 📁 Create new projects instantly
+* 🌿 Initialize Git repositories
+* 🐍 Create Python virtual environments
+* 📦 Generate projects from templates
+
+  * Default
+  * FastAPI
+* 📂 Organize files automatically by file type
+* 🔐 Generate cryptographically secure passwords
+* 🔑 Generate hashes for text and files
+* ✅ Validate project names
+* ⚠️ Custom exception handling
+* 🏗️ Modular service-based architecture
+* 🌳 Professional Git feature-branch workflow
 
 ---
 
-## 🚀 Installation
+# 🚀 Installation
+
+## Prerequisites
+
+* Python 3.10 or later
+* Git *(optional, only required for Git initialization)*
+
+---
 
 ### 1. Clone the repository
 
@@ -27,7 +42,7 @@ A developer productivity CLI tool built with **Python** and **Typer** to automat
 git clone https://github.com/<your-github-username>/DevUtilityTool.git
 ```
 
-### 2. Navigate to the project
+### 2. Navigate into the project
 
 ```bash
 cd DevUtilityTool
@@ -59,60 +74,82 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
-
-# 📖 Commands
-
-## 👋 Greeting
-
-Print a simple greeting message.
+### 6. Install the CLI in editable mode
 
 ```bash
-python main.py hello
+pip install -e .
+```
+
+Verify the installation:
+
+```bash
+devtool --help
 ```
 
 ---
 
-## 📁 Initialize Project
+# 📖 Command Reference
+
+| Command    | Description                       |
+| ---------- | --------------------------------- |
+| `hello`    | Print a greeting message          |
+| `init`     | Create a new project              |
+| `organize` | Organize files by extension       |
+| `password` | Generate secure passwords         |
+| `hash`     | Generate hashes for text or files |
+
+---
+
+# 👋 Greeting
+
+Print a greeting message.
+
+```bash
+devtool hello
+```
+
+---
+
+# 📁 Project Initialization
 
 Create a new project.
 
 ```bash
-python main.py init MyProject
+devtool init MyProject
 ```
 
 Create a project with Git initialized.
 
 ```bash
-python main.py init MyProject --git
+devtool init MyProject --git
 ```
 
-Create a project with a Python virtual environment.
+Create a project with a virtual environment.
 
 ```bash
-python main.py init MyProject --venv
+devtool init MyProject --venv
 ```
 
 Create a project using the default template.
 
 ```bash
-python main.py init MyProject --template default
+devtool init MyProject --template default
 ```
 
 Create a FastAPI project.
 
 ```bash
-python main.py init MyProject --template fastapi
+devtool init MyProject --template fastapi
 ```
 
 ---
 
-## 📂 File Organizer
+# 📂 File Organizer
 
-Organize files into folders based on their extensions.
+Organize files into folders according to their file types.
 
 ```bash
-python main.py organize Downloads
+devtool organize Downloads
 ```
 
 Example output:
@@ -125,43 +162,60 @@ Downloads/
 ├── Videos/
 ├── Music/
 ├── Python/
-└── Archives/
+├── C++/
+├── CSV/
+├── Packet_Tracer/
+├── Archives/
+└── MarkDowns/
 ```
+
+Supported categories include:
+
+* Images
+* Documents
+* Videos
+* Music
+* Python
+* C++
+* CSV
+* Archives
+* Packet_Tracer
+* MarkDowns
 
 ---
 
-## 🔐 Password Generator
+# 🔐 Password Generator
 
-Generate a cryptographically secure password.
+Generate a secure password using Python's `secrets` module.
 
-Default password (12 characters):
+Generate the default password (12 characters).
 
 ```bash
-python main.py password
+devtool password
 ```
 
-Generate a password with a custom length.
+Generate a 20-character password.
 
 ```bash
-python main.py password --length 20
+devtool password --length 20
 ```
 
-Generate a password without symbols.
+Exclude symbols.
 
 ```bash
-python main.py password --no-symbols
+devtool password --no-symbols
 ```
 
-Generate a password without digits.
+Exclude digits.
 
 ```bash
-python main.py password --no-digits
+devtool password --no-digits
 ```
 
-Generate a password with lowercase letters only.
+Generate a password containing lowercase letters only.
 
 ```bash
-python main.py password \
+devtool password \
     --no-uppercase \
     --no-digits \
     --no-symbols
@@ -169,45 +223,45 @@ python main.py password \
 
 ---
 
-## 🔑 Hash Generator
+# 🔑 Hash Generator
 
-Generate the hash of text.
-
-Default (SHA-256):
+Generate the SHA-256 hash of text.
 
 ```bash
-python main.py hash "Hello World"
+devtool hash "Hello World"
 ```
 
 Generate an MD5 hash.
 
 ```bash
-python main.py hash "Hello World" --algorithm md5
+devtool hash "Hello World" --algorithm md5
 ```
 
 Generate a SHA-1 hash.
 
 ```bash
-python main.py hash "Hello World" --algorithm sha1
+devtool hash "Hello World" --algorithm sha1
 ```
 
 Generate the hash of a file.
 
 ```bash
-python main.py hash document.pdf
+devtool hash document.pdf
 ```
 
-Generate the hash of a file using MD5.
+Generate the MD5 hash of a file.
 
 ```bash
-python main.py hash document.pdf --algorithm md5
+devtool hash document.pdf --algorithm md5
 ```
 
-Supported algorithms:
+### Supported Algorithms
 
-* MD5
-* SHA-1
-* SHA-256
+| Algorithm | Supported |
+| --------- | --------- |
+| MD5       | ✅         |
+| SHA-1     | ✅         |
+| SHA-256   | ✅         |
 
 ---
 
@@ -246,6 +300,7 @@ DevUtilityTool/
 │   └── fastapi/
 │
 ├── main.py
+├── pyproject.toml
 ├── requirements.txt
 ├── README.md
 └── .gitignore
@@ -259,17 +314,17 @@ The project follows a layered architecture.
 
 ### Commands Layer
 
-Responsible for parsing CLI arguments and interacting with the user.
+Responsible for parsing CLI arguments and interacting with users.
 
 ### Services Layer
 
-Contains the business logic.
+Contains the business logic of the application.
 
 ### Config Layer
 
-Stores reusable configuration values such as supported file types and hashing algorithms.
+Stores reusable configuration such as file-type mappings and supported hash algorithms.
 
-This separation of concerns makes the project easy to maintain, test, and extend.
+This separation of concerns makes the project easier to maintain, test, and extend.
 
 ---
 
@@ -279,12 +334,14 @@ This separation of concerns makes the project easy to maintain, test, and extend
 
 * [x] Greeting command
 * [x] Project initialization
-* [x] Git integration
+* [x] Git repository initialization
 * [x] Python virtual environment creation
 * [x] Project templates
 * [x] File organizer
 * [x] Secure password generator
-* [x] Text and file hash generator
+* [x] Text hash generation
+* [x] File hash generation
+* [x] Project name validation
 * [x] Custom exception handling
 
 ## 🚧 Planned
@@ -294,14 +351,15 @@ This separation of concerns makes the project easy to maintain, test, and extend
 * [ ] Bulk file renamer
 * [ ] Logging support
 * [ ] Unit tests
-* [ ] Configuration file support
+* [ ] Configuration management
+* [ ] GitHub Actions (CI)
 * [ ] Publish to PyPI
 
 ---
 
 # 🛠️ Technologies Used
 
-* Python 3
+* Python
 * Typer
 * Pathlib
 * Hashlib
@@ -318,14 +376,14 @@ This separation of concerns makes the project easy to maintain, test, and extend
 This project is being developed to practice and demonstrate:
 
 * Python application architecture
-* CLI development with Typer
-* File and directory handling
+* CLI application development with Typer
+* Modular software design
+* File and directory management
 * Secure password generation
 * File hashing
 * Git automation
 * Exception handling
-* Modular software design
-* Professional Git and GitHub workflow
+* Professional Git & GitHub workflow
 
 ---
 
@@ -336,16 +394,8 @@ Contributions, suggestions, and improvements are welcome.
 1. Fork the repository.
 2. Create a feature branch.
 3. Commit your changes.
-4. Push the branch.
+4. Push your branch.
 5. Open a Pull Request.
-
----
-
-## 🚧 Project Status
-
-This project is currently under active development and is being built as a learning project to explore Python CLI development and software engineering best practices.
-
-While many features are functional and follow clean architectural principles, the project is not yet intended for production use. Planned improvements include comprehensive unit tests, CI/CD, enhanced logging, configuration management, packaging for PyPI, and additional CLI utilities.
 
 ---
 

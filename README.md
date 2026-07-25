@@ -243,7 +243,6 @@ DevUtilityTool/
 │
 ├── templates/
 │   ├── default/
-│   ├── django/
 │   └── fastapi/
 │
 ├── main.py

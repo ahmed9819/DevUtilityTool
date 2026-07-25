@@ -1,0 +1,2 @@
+[console_scripts]
+devtool = src.app:app

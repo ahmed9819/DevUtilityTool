@@ -1,22 +1,25 @@
 # DevUtilityTool
 
-A developer productivity CLI tool built with **Python** and **Typer** to automate common development tasks. The project is designed with a modular architecture and follows a professional Git/GitHub workflow using feature branches and pull requests.
+A developer productivity CLI tool built with **Python** and **Typer** to automate common development tasks. The project follows a modular, service-based architecture and a professional Git/GitHub workflow using feature branches and pull requests.
 
 ---
 
-## Features
+## ✨ Features
 
-* Create a new project structure
-* Initialize a Git repository automatically
+* Create new projects instantly
+* Initialize Git repositories
+* Create Python virtual environments
+* Generate projects from templates
+* Organize files by type
+* Generate cryptographically secure passwords
+* Generate text and file hashes
 * Validate project names
 * Custom exception handling
 * Modular and scalable architecture
-* Service-based project organization
-* Feature-based Git workflow
 
 ---
 
-## Installation
+## 🚀 Installation
 
 ### 1. Clone the repository
 
@@ -58,23 +61,157 @@ pip install -r requirements.txt
 
 ---
 
-## Usage
+# 📖 Commands
 
-### Create a new project
+## 👋 Greeting
+
+Print a simple greeting message.
+
+```bash
+python main.py hello
+```
+
+---
+
+## 📁 Initialize Project
+
+Create a new project.
 
 ```bash
 python main.py init MyProject
 ```
 
-### Create a new project with Git initialized
+Create a project with Git initialized.
 
 ```bash
 python main.py init MyProject --git
 ```
 
+Create a project with a Python virtual environment.
+
+```bash
+python main.py init MyProject --venv
+```
+
+Create a project using the default template.
+
+```bash
+python main.py init MyProject --template default
+```
+
+Create a FastAPI project.
+
+```bash
+python main.py init MyProject --template fastapi
+```
+
 ---
 
-## Project Structure
+## 📂 File Organizer
+
+Organize files into folders based on their extensions.
+
+```bash
+python main.py organize Downloads
+```
+
+Example output:
+
+```text
+Downloads/
+│
+├── Images/
+├── Documents/
+├── Videos/
+├── Music/
+├── Python/
+└── Archives/
+```
+
+---
+
+## 🔐 Password Generator
+
+Generate a cryptographically secure password.
+
+Default password (12 characters):
+
+```bash
+python main.py password
+```
+
+Generate a password with a custom length.
+
+```bash
+python main.py password --length 20
+```
+
+Generate a password without symbols.
+
+```bash
+python main.py password --no-symbols
+```
+
+Generate a password without digits.
+
+```bash
+python main.py password --no-digits
+```
+
+Generate a password with lowercase letters only.
+
+```bash
+python main.py password \
+    --no-uppercase \
+    --no-digits \
+    --no-symbols
+```
+
+---
+
+## 🔑 Hash Generator
+
+Generate the hash of text.
+
+Default (SHA-256):
+
+```bash
+python main.py hash "Hello World"
+```
+
+Generate an MD5 hash.
+
+```bash
+python main.py hash "Hello World" --algorithm md5
+```
+
+Generate a SHA-1 hash.
+
+```bash
+python main.py hash "Hello World" --algorithm sha1
+```
+
+Generate the hash of a file.
+
+```bash
+python main.py hash document.pdf
+```
+
+Generate the hash of a file using MD5.
+
+```bash
+python main.py hash document.pdf --algorithm md5
+```
+
+Supported algorithms:
+
+* MD5
+* SHA-1
+* SHA-256
+
+---
+
+# 🏗️ Project Structure
 
 ```text
 DevUtilityTool/
@@ -82,91 +219,110 @@ DevUtilityTool/
 ├── src/
 │   ├── commands/
 │   │   ├── greet.py
-│   │   ├── init.py
 │   │   ├── hash.py
-│   │   ├── info.py
+│   │   ├── init.py
 │   │   ├── organize.py
 │   │   └── password.py
 │   │
+│   ├── config/
+│   │   ├── file_type.py
+│   │   └── hash_algorithms.py
+│   │
 │   ├── services/
+│   │   ├── git_service.py
+│   │   ├── hash_service.py
+│   │   ├── organizer_service.py
+│   │   ├── password_service.py
 │   │   ├── project_creator.py
 │   │   ├── project_initializer.py
-│   │   └── git_service.py
+│   │   ├── template_service.py
+│   │   └── venv_service.py
 │   │
 │   ├── app.py
 │   └── __init__.py
 │
+├── templates/
+│   ├── default/
+│   ├── django/
+│   └── fastapi/
+│
 ├── main.py
-├── README.md
 ├── requirements.txt
+├── README.md
 └── .gitignore
 ```
 
 ---
 
-## Architecture
+# 🏛️ Architecture
 
 The project follows a layered architecture.
 
 ### Commands Layer
 
-Responsible for handling CLI commands and user input.
+Responsible for parsing CLI arguments and interacting with the user.
 
 ### Services Layer
 
-Contains the business logic of the application.
+Contains the business logic.
 
-Current services include:
+### Config Layer
 
-* Project creation
-* Git repository initialization
-* Project orchestration
+Stores reusable configuration values such as supported file types and hashing algorithms.
 
-This separation of concerns makes the project easier to maintain, test, and extend.
+This separation of concerns makes the project easy to maintain, test, and extend.
 
 ---
 
-## Roadmap
+# 🛣️ Roadmap
 
-### Completed
+## ✅ Completed
 
 * [x] Greeting command
 * [x] Project initialization
 * [x] Git integration
-* [x] Project name validation
+* [x] Python virtual environment creation
+* [x] Project templates
+* [x] File organizer
+* [x] Secure password generator
+* [x] Text and file hash generator
 * [x] Custom exception handling
-* [x] Virtual environment creation
 
-### Planned
+## 🚧 Planned
 
-* [ ] Project templates
-* [ ] File organizer
-* [ ] Password generator
-* [ ] Hash generator
+* [ ] Duplicate file finder
+* [ ] JSON formatter
+* [ ] Bulk file renamer
 * [ ] Logging support
 * [ ] Unit tests
-* [ ] Configuration support
+* [ ] Configuration file support
+* [ ] Publish to PyPI
 
 ---
 
-## Technologies Used
+# 🛠️ Technologies Used
 
 * Python 3
 * Typer
 * Pathlib
+* Hashlib
+* Secrets
+* Shutil
 * Subprocess
 * Git
 * GitHub
 
 ---
 
-## Learning Objectives
+# 🎯 Learning Objectives
 
 This project is being developed to practice and demonstrate:
 
 * Python application architecture
 * CLI development with Typer
 * File and directory handling
+* Secure password generation
+* File hashing
 * Git automation
 * Exception handling
 * Modular software design
@@ -174,7 +330,7 @@ This project is being developed to practice and demonstrate:
 
 ---
 
-## Contributing
+# 🤝 Contributing
 
 Contributions, suggestions, and improvements are welcome.
 
@@ -186,6 +342,6 @@ Contributions, suggestions, and improvements are welcome.
 
 ---
 
-## License
+# 📄 License
 
 This project is licensed under the MIT License.

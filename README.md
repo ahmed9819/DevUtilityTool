@@ -341,6 +341,14 @@ Contributions, suggestions, and improvements are welcome.
 
 ---
 
+## 🚧 Project Status
+
+This project is currently under active development and is being built as a learning project to explore Python CLI development and software engineering best practices.
+
+While many features are functional and follow clean architectural principles, the project is not yet intended for production use. Planned improvements include comprehensive unit tests, CI/CD, enhanced logging, configuration management, packaging for PyPI, and additional CLI utilities.
+
+---
+
 # 📄 License
 
 This project is licensed under the MIT License.
